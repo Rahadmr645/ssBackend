@@ -51,7 +51,7 @@ app.use(express.json());
 // router section 
 app.use('/api/user', userRoutes);
 app.use('/', (req, res) => {
-  res.json("you are welcome")
+  res.json("you are welcome and fock you rahad you can do just need to keep  consistent")
 });
 //  mongo connection
 connectToMongo();
