@@ -6,6 +6,8 @@ import { Server as SocketServer } from 'socket.io'
 import connectToMongo from './config/db.js'
 import userRoutes from './routes/userRoutes.js'
 import User from './model/userModel.js';
+import cors from 'cors'
+
 const app = express();
 const server = http.createServer(app);
 const io = new SocketServer(server, {
@@ -14,6 +16,7 @@ const io = new SocketServer(server, {
   }
 });
 
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
