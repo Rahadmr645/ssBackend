@@ -16,7 +16,22 @@ const io = new SocketServer(server, {
   }
 });
 
-app.use(cors());
+const allowedOrigins = [
+  'https://ssms-brown.vercel.app',
+  'http://localhost:5173'
+];
+
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true) // allow non-brosers
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'CORS policy does not allow access from this origin'
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
 
 const PORT = process.env.PORT || 3001;
 
